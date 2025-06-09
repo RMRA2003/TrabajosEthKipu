@@ -1,63 +1,34 @@
-Smart Contract - Auction
-This is a Solidity smart contract for an auction deployed on the Sepolia test network. Users can place bids with Ether (ETH), and the highest valid bid wins. The contract handles time extensions, refunds, and keeps track of each bid.
+# Smart Auction Contract (Sepolia Network)
 
-Features
-Constructor: Sets the auction duration (in minutes) and the contract owner.
+This project is a smart auction contract written in Solidity and deployed to the Sepolia Ethereum testnet. It allows users to place bids with automatic bid management, winner tracking, and partial refunds. The contract includes security features, time extensions, and commission-based reimbursements.
 
-Bid (ofertar)
-Bids must be at least 5% higher than the current best bid.
-If a valid bid is placed during the last 10 minutes of the auction, the auction is extended by 10 more minutes.
+## Features
 
-View Winner (verGanador)
-Returns the current highest bidder and the amount of their bid.
+- Auction creation with customizable duration.
+- Bids with a minimum increment of 5%.
+- Tracks the current highest bidder and bid amount.
+- Partial refunds for non-winning bidders with a 2% commission.
+- Automatic extension of auction time if a bid is placed near the end.
+- Winner can be consulted after the auction ends.
+- Transparent and verifiable on Sepolia Etherscan.
 
-View Bids (verOfertas)
-Returns the list of all bidders and the total amount each one has offered.
+## Smart Contract
 
-Finalize Auction (finalizarSubasta)
-Can only be called by the owner after the auction ends.
-Non-winning bidders are refunded their deposits with a 2% fee deducted.
+- **Address**: [`0xb6f479784338358d8cab3cfcd3193e84f87a23bb`](https://sepolia.etherscan.io/address/0xb6f479784338358d8cab3cfcd3193e84f87a23bb)
+- **Network**: Sepolia Testnet
+- **License**: GPL-3.0
 
-Partial Refund (reembolsoParcial)
-If a user placed more than one bid, they can request a refund for all previous bids, keeping only the last one.
+## Technologies Used
 
-Security
-Critical functions are protected using modifiers such as soloDueño, soloDuranteSubasta, and noFinalizada.
+- Solidity (`^0.8.19`)
+- Remix IDE
+- MetaMask (for deployment)
+- Git & GitHub
+- Etherscan (for verification)
 
-ETH funds are held safely within the contract and are only returned under validated conditions.
+## How to Use
 
-require statements ensure valid usage and prevent unexpected behavior.
-
-Events
-solidity
-Copiar
-Editar
-event NuevaOferta(address ofertante, uint monto);
-event SubastaFinalizada(address ganador, uint monto);
-These events are emitted when a new bid is placed and when the auction is finalized.
-
-How to Deploy (Sepolia Testnet)
-Go to Remix IDE
-
-Create a new file named Subasta.sol and paste the contract code.
-
-Compile the contract using Solidity version 0.8.20 or higher.
-
-Connect MetaMask to the Sepolia testnet.
-
-Deploy the contract by setting the auction duration in minutes (e.g., 15).
-
-After deployment, copy the contract address.
-
-Go to Sepolia Etherscan, search for your contract address, and verify the source code.
-
-Notes
-The auction duration must be greater than 10 minutes.
-
-Only one winner is selected (the highest valid bid).
-
-All bids are recorded and can be viewed.
-
-Bidders can recover previous bids if they placed more than one.
-
-You must have ETH in your wallet from a Sepolia faucet to test the contract.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/your-repo.git
+s
